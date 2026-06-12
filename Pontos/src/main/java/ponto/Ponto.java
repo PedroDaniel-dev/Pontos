@@ -9,6 +9,8 @@ public class Ponto implements Comparable<Ponto>{
         this.y = y;
     }
 
+    public Ponto(){}
+
     @Override
     public int compareTo(Ponto outro) {
         if (this.getX() > outro.getX()) return 1;
