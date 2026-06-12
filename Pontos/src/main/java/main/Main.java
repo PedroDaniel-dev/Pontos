@@ -22,18 +22,22 @@ public class Main {
         // Abra o arquivo para ler os dados e não se esqueça de fechá-lo
         int numeroPontos = 0;
         int k = 0;
-        try{
-            Scanner sc = new Scanner(new File(fileName));
+        try (Scanner sc = new Scanner(new File(fileName))){
             k = sc.nextInt();
             for(int i = 0; i < k; i++){
                 numeroPontos = sc.nextInt();
-                for(int i = 0; i < numeroPontos; i++) {
-                    arvore.inserir(Ponto ponto = new Ponto(sc.nextLine()));
+                for(int j = 0; j < numeroPontos; j++) {
+                    Ponto ponto = new Ponto();
+                    ponto.setX(sc.nextInt());
+                    ponto.setY(sc.nextInt());
+                    arvore.inserir(ponto);
                 }
             }
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado.");
         }
-    }
+        arvore.emOrdem(ponto ->  {
+            System.out.printf("(" + ponto.getX() + ", " + ponto.getY() + ") ");
+        });
     }
 }
